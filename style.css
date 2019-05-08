@@ -1,0 +1,248 @@
+@font-face {
+    font-family: 'graphik-wide';
+    src: url('/fonts/graphik-wide-01.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+body {
+  position: relative;
+}
+
+#map {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+ }
+
+h2 {
+  font-family: input-sans-compressed, sans-serif;
+  font-weight: 400; 
+  font-style: normal;
+  font-size: 2em;
+  letter-spacing: 4px;
+}
+
+u {
+  font-family: museo-slab, serif;
+  font-weight: 500;
+  font-style: italic;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  color: #777;
+}
+
+/* ---------- use mobile prompt ---------- */
+#prompt-mobile {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #f5f5f5;
+  z-index: 99;
+  left: 0;
+  top: 0;
+}
+
+#prompt-content {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+/* ---------- debug ui ---------- */
+#debug-ui {
+  z-index: 5;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+
+/* ---------- marker ---------- */
+.marker {
+  background-size: cover;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  border: 2px solid #a1a1a1;
+  cursor: pointer;
+  z-index: 4;
+  transition: width 0.1s, height 0.1s;
+}
+
+.marker:active {
+  width: 72px;
+  height: 72px;
+}
+
+/* ---------- UI ---------- */
+#ui-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  background: none;
+  z-index: 8;
+  align-items: center;
+  pointer-events: none;
+}
+
+.ui-block {
+  background: #f5f5f5;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 0px rgba(145, 145, 145, 0.5);
+  pointer-events: all;
+}
+
+#image-view {
+  position: absolute;
+  bottom: 48px;
+  width: calc(100% - 32px);
+  box-sizing: border-box;
+  padding: 12px;
+  transition: bottom 0.5s;
+}
+
+#image-view.hidden {
+  bottom: -512px;
+}
+
+#image {
+  display: block;
+  z-index: 9;
+  margin-bottom: 6px;
+}
+
+img {
+  width: 100%;
+}
+
+#image-control {
+  height: 32px;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.vote {
+  width: 50%;
+  height: 36px;
+  border: 1px solid #c7c7c6;
+  font-size: 1.2em;
+  color: #494846;
+}
+
+button {
+  background: inherit;
+  color: #494846;
+  transition: all 0.1s ease;
+}
+
+button:disabled {
+  color: #c7c7c6;
+}
+
+.vote .diasbled {
+  color: #c7c7c6;
+}
+
+#upvote {
+  border-radius: 4px 0 0 4px;
+}
+
+#downvote {
+  border-radius: 0 4px 4px 0;
+}
+
+.vote i {
+  pointer-events: none;
+}
+
+#new-image {
+  position: absolute;
+  bottom: 48px;
+  width: calc(100% - 32px);
+  box-sizing: border-box;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-family: input-sans-compressed, sans-serif;
+  font-weight: 400; 
+  font-style: normal;
+  letter-spacing: 2px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  color: #494846;
+}
+
+#leaderboard-button {
+  position: absolute;
+  bottom: 100px;
+  width: calc(100% - 32px);
+  box-sizing: border-box;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2e2e2e;
+  border: #4e4e4e;
+}
+
+#leaderboard-button label {
+  color: #f5f5f5;
+}
+
+#leaderboard {
+  position: absolute;
+  bottom: 48px;
+  width: calc(100% - 32px);
+  box-sizing: border-box;
+  padding: 16px;
+  align-items: center;
+  transition: bottom 0.5s;
+}
+
+#leaderboard.hidden {
+  bottom: -700px;
+}
+
+#leaderboard-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+#leaderboard-grid img {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+}
+
+input.file-upload {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
